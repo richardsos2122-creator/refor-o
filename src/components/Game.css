@@ -1,0 +1,98 @@
+/* Gradiente de fundo atualizado para o jogo */
+.game {
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    color: #f0f0f0;
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Animação para letras corretas com cores vibrantes */
+.correct {
+    animation: correctLetter 0.5s ease-in-out;
+}
+
+@keyframes correctLetter {
+    0% {
+        transform: scale(1);
+        color: #f0f0f0;
+    }
+
+    50% {
+        transform: scale(1.2);
+        color: #00ff7f;
+    }
+
+    100% {
+        transform: scale(1);
+        color: #f0f0f0;
+    }
+}
+
+/* Botões com cores mais modernas */
+button {
+    background-color: #00bcd4;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+button:hover {
+    background-color: #008ba3;
+    transform: scale(1.05);
+}
+
+.game h1 {
+    font-size: 2.5em;
+}
+
+.points span {
+    font-weight: bold;
+}
+
+.tip span {
+    color: #ecfa00;
+}
+
+.wordContainer {
+    margin: 1.5em;
+    padding: 1.5em;
+    border: 20px solid #ecfa00;
+    display: flex;
+}
+
+.letter,
+.blankSquare {
+    font-size: 70px;
+    line-height: 1.5;
+    border: 3px solid #000;
+    height: 100px;
+    width: 100px;
+    text-transform: uppercase;
+    background-color: #fff;
+    color: #000;
+    font-weight: bold;
+}
+
+.letterContainer p {
+    margin-bottom: 1.2em;
+}
+
+.letterContainer form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.letterContainer input {
+    height: 50px;
+    width: 50px;
+    font-size: 2em;
+    text-align: center;
+    margin-right: 1em;
+}

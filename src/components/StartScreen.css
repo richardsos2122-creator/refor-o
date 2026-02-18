@@ -1,0 +1,46 @@
+.start {
+    background: linear-gradient(135deg, #00c6ff, #0072ff);
+    color: #f0f0f0;
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+.start h1 {
+    font-size: 3.5rem;
+    animation: slideIn 1s ease-in-out;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.start p {
+    margin-bottom: 2em;
+    color: #ffeb3b;
+}
+
+button {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+button:hover {
+    background-color: #388e3c;
+    transform: scale(1.05);
+}

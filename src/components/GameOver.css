@@ -1,0 +1,40 @@
+/* Gradiente de fundo atualizado para a tela de Game Over */
+.gameover {
+    background: linear-gradient(135deg, #ff512f, #dd2476);
+    color: #f0f0f0;
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+h1 {
+    font-size: 3rem;
+    animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+button {
+    background-color: #ff6f61;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+button:hover {
+    background-color: #e64a19;
+    transform: scale(1.05);
+}
