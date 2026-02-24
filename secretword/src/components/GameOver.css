@@ -1,0 +1,7 @@
+.gameover{padding:28px;border-radius:14px;background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);box-shadow:0 10px 40px rgba(2,6,23,0.7);max-width:720px;margin:0 auto;color:var(--fg,#e6eef8)}
+.gameover h1{font-size:2.2rem;margin:6px 0}
+.gameover h2{color:var(--muted,#9aa4b2);font-weight:700}
+.gameover button{margin-top:14px;padding:10px 16px;border-radius:10px;background:linear-gradient(90deg,var(--accent),var(--accent-2));border:none;color:#fff;cursor:pointer}
+.gameover .meta{margin-top:12px;color:var(--muted)}
+/* entrance */
+.gameover.fadeIn{animation:fadeIn .36s ease both}
