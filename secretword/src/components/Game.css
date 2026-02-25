@@ -30,16 +30,21 @@
   transition:transform .18s ease, box-shadow .18s ease, border-color .14s ease, background .18s ease;
   box-shadow:0 2px 16px 2px rgba(106,92,255,0.18), 0 0 0 3px #fff3, 0 1px 0 0 #0002;
 }
+/* Azul neon vibrante */
 .letter{
-  background:linear-gradient(180deg,#fff,#e6eef8 80%,#bdbfff 100%);
-  color:#1a1a2a;
-  border:2.5px solid var(--accent-2,#6a5cff);
-  box-shadow:0 2px 16px 2px rgba(106,92,255,0.22), 0 0 0 3px #fff6, 0 1px 0 0 #0002;
+  background:linear-gradient(180deg,#00eaff 60%,#00bfff 100%);
+  color:#002a3a;
+  border:2.5px solid #00eaff;
+  box-shadow:0 2px 24px 4px #00eaff99, 0 0 0 3px #fff6, 0 1px 0 0 #0002;
+  text-shadow:0 1px 8px #fff, 0 0 2px #00eaff;
 }
+}
+/* Azul neon vibrante para quadrados vazios */
 .blankSquare{
-  background:linear-gradient(180deg,#e6eef8 60%,#bdbfff 100%);
-  border:2.5px dashed #6a5cff;
-  opacity:0.7;
+  background:linear-gradient(180deg,#00eaff33 60%,#00bfff33 100%);
+  border:2.5px dashed #00eaff;
+  opacity:0.85;
+}
 }
 
 /* highlight interactions for letter squares */
