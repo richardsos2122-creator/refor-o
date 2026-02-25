@@ -1,4 +1,48 @@
-# Getting Started with Create React App
+# Frequência Reforço
+
+Aplicação para controle de frequência e gerenciamento de alunos e contas.
+
+## Como executar
+
+- Instale dependências:
+
+```bash
+cd "C:\Users\User\Documents\AVANCE.JS\frequencia-reforco"
+npm install
+```
+
+- Inicie em modo de desenvolvimento:
+
+```bash
+npm start
+```
+
+Abra http://localhost:3000 no navegador.
+
+## Credenciais padrão
+
+- Usuário: `admin`
+- Senha: `admin`
+
+As contas são armazenadas no `localStorage` sob a chave `avanca_users_v1`.
+
+## Funcionalidades principais
+
+- Registro e validação de usuários (Login).
+- Painel com navegação: Frequência, Alunos, Calendário e Contas.
+- Na tela `Contas` há duas abas: "Adicionar Conta" e "Listar Contas" (criar, alterar senha, remover).
+
+## Notas para desenvolvedores
+
+- Arquivo de dados principal: [src/db.js](src/db.js#L1-L200)
+- Componente de contas: [src/components/Accounts.js](src/components/Accounts.js#L1-L200)
+- Entrada da aplicação: [src/App.js](src/App.js#L1-L200)
+
+Se quiser publicar ou integrar com um backend, recomendo migrar o armazenamento de `localStorage` para uma API ou IndexedDB.
+
+## Licença
+
+Use como desejar. Entre em contato caso precise de ajuda com deploy ou CI/CD.# Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

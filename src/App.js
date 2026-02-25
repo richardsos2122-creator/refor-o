@@ -1,184 +1,29 @@
-import { useCallback, useEffect, useState } from "react";
+import './App.css';
+import React, {useState} from 'react'
+import Login from './components/Login'
+import Dashboard from './components/Dashboard'
+import Attendance from './components/Attendance'
+import Students from './components/Students'
+import CalendarView from './components/CalendarView'
+import Accounts from './components/Accounts'
 
-// components
-import StartScreen from "./components/StartScreen";
-import Game from "./components/Game";
-import GameOver from "./components/GameOver";
+function App(){
+  const [user, setUser] = useState(null)
+  const [view, setView] = useState('attendance')
 
-// styles
-import "./App.css";
+  function handleLogin(username){ setUser(username) }
+  function handleLogout(){ setUser(null) }
 
-// data
-import { wordsList } from "./data/words";
-
-const stages = [
-  { id: 1, name: "start" },
-  { id: 2, name: "game" },
-  { id: 3, name: "end" },
-];
-
-function App() {
-  const [gameStage, setGameStage] = useState(stages[0].name);
-  const [words] = useState(wordsList);
-
-  const [pickedWord, setPickedWord] = useState("");
-  const [pickedCategory, setPickedCategory] = useState("");
-  const [letters, setLetters] = useState([]);
-
-  const [guessedLetters, setGuessedLetters] = useState([]);
-  const [wrongLetters, setWrongLetters] = useState([]);
-  const [guesses, setGuesses] = useState(3);
-  const [score, setScore] = useState(0);
-  const [difficulty, setDifficulty] = useState("fácil");
-  const [timeLeft, setTimeLeft] = useState(30); // Temporizador inicial
-
-  console.log(words);
-
-  const pickWordAndCategory = useCallback(() => {
-    // pick a random category
-    const categories = Object.keys(words);
-    const category =
-      categories[Math.floor(Math.random() * Object.keys(categories).length)];
-
-    // pick a random word
-    const word =
-      words[category][Math.floor(Math.random() * words[category].length)];
-
-    console.log(category, word);
-
-    return { category, word };
-  }, [words]);
-
-  // start the game
-  const startGame = useCallback(() => {
-    // clear all letters
-    clearLettersStates();
-
-    // choose a word
-    const { category, word } = pickWordAndCategory();
-
-    console.log(category, word);
-
-    let wordLetters = word.split("");
-
-    wordLetters = wordLetters.map((l) => l.toLowerCase());
-
-    // console.log(category, word);
-
-    setPickedCategory(category);
-    setPickedWord(word);
-    setLetters(wordLetters);
-
-    setGameStage(stages[1].name);
-  }, [pickWordAndCategory]);
-
-  // process letter input
-  const verifyLetter = (letter) => {
-    const normalizedLetter = letter.toLowerCase();
-
-    // check if letter has already been utilized
-    if (
-      guessedLetters.includes(normalizedLetter) ||
-      wrongLetters.includes(normalizedLetter)
-    ) {
-      return;
-    }
-
-    // push guessed letter or remove a chance
-    if (letters.includes(normalizedLetter)) {
-      setGuessedLetters((actualGuessedLetters) => [
-        ...actualGuessedLetters,
-        letter,
-      ]);
-    } else {
-      setWrongLetters((actualWrongLetters) => [
-        ...actualWrongLetters,
-        normalizedLetter,
-      ]);
-
-      setGuesses((actualGuesses) => actualGuesses - 1);
-    }
-  };
-
-  console.log(wrongLetters);
-
-  // restart the game
-  const retry = () => {
-    setScore(0);
-    setGuesses(3);
-    setGameStage(stages[0].name);
-  };
-
-  // clear letters state
-  const clearLettersStates = () => {
-    setGuessedLetters([]);
-    setWrongLetters([]);
-  };
-
-  // check if guesses ended
-  useEffect(() => {
-    if (guesses === 0) {
-      // game over and reset all states
-      clearLettersStates();
-
-      setGameStage(stages[2].name);
-    }
-  }, [guesses]);
-
-  // check win condition
-  useEffect(() => {
-    const uniqueLetters = [...new Set(letters)];
-
-    console.log(uniqueLetters);
-    console.log(guessedLetters);
-
-    // win condition
-    if (guessedLetters.length === uniqueLetters.length) {
-      // add score
-      setScore((actualScore) => (actualScore += 100));
-
-      // restart game with new word
-      startGame();
-    }
-  }, [guessedLetters, letters, startGame]);
-
-  // temporizador
-  useEffect(() => {
-    if (gameStage === "game" && timeLeft > 0) {
-      const timer = setTimeout(() => setTimeLeft(timeLeft - 1), 1000);
-      return () => clearTimeout(timer);
-    } else if (timeLeft === 0) {
-      setGameStage("end");
-    }
-  }, [gameStage, timeLeft]);
-
-  // Função para alterar dificuldade
-  const changeDifficulty = (level) => {
-    setDifficulty(level);
-    if (level === "fácil") setGuesses(5);
-    if (level === "médio") setGuesses(3);
-    if (level === "difícil") setGuesses(2);
-  };
+  if(!user) return <Login onLogin={handleLogin} />
 
   return (
-    <div className="App">
-      {gameStage === "start" && <StartScreen startGame={startGame} />}
-      {gameStage === "game" && (
-        <Game
-          verifyLetter={verifyLetter}
-          pickedCategory={pickedCategory}
-          pickedWord={pickedWord}
-          letters={letters}
-          guessedLetters={guessedLetters}
-          wrongLetters={wrongLetters}
-          guesses={guesses}
-          score={score}
-          timeLeft={timeLeft} // Passando o temporizador para o componente Game
-        />
-      )}
-      {gameStage === "end" && <GameOver retry={retry} score={score} />}
-    </div>
-  );
+    <Dashboard user={user} view={view} setView={setView} onLogout={handleLogout}>
+      {view==='attendance' && <Attendance />}
+      {view==='students' && <Students />}
+      {view==='calendar' && <CalendarView />}
+      {view==='accounts' && <Accounts />}
+    </Dashboard>
+  )
 }
 
 export default App;
