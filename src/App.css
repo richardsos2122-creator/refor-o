@@ -1,17 +1,49 @@
-.App {
-  text-align: center;
+:root{
+  --bg:#f5f7fb; --card:#ffffff; --accent:#2d7ef7; --muted:#6b7280;
 }
+body{ margin:0; font-family: Inter, system-ui, Segoe UI, Roboto, Arial; background:var(--bg); color:#111 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
+.login-page{height:100vh;display:flex;align-items:center;justify-content:center}
+.login-card{width:360px;background:var(--card);padding:28px;border-radius:12px;box-shadow:0 6px 20px rgba(20,30,60,0.08);text-align:left}
+.logo{font-size:28px;font-weight:700;color:var(--accent)}
+.logo .dot{color:#ff6b6b}
+.logo-image, .login-logo { width:44px; height:44px; border-radius:10px; object-fit:cover }
+.login-logo{ width:120px; display:block; margin:0 auto 12px }
+.subtitle{color:var(--muted);margin:8px 0 18px}
+label{display:block;margin-top:8px;color:#333;font-size:13px}
+input{width:100%;padding:10px;margin-top:6px;border:1px solid #e6e9ef;border-radius:8px}
+.actions{display:flex;gap:8px;margin-top:14px}
+.btn{background:#f3f4f6;border:none;padding:8px 12px;border-radius:8px;cursor:pointer}
+.btn.primary{background:var(--accent);color:white}
+.btn.small{padding:6px 8px;font-size:13px}
+.error{color:#b91c1c;margin-top:8px}
+.hint{margin-top:12px;color:var(--muted);font-size:13px}
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
+.app-root{display:grid;grid-template-columns:220px 1fr;min-height:100vh}
+.top{grid-column:1/-1;display:flex;justify-content:space-between;align-items:center;padding:14px 24px;background:linear-gradient(90deg,#fff,#f8fbff);box-shadow:0 1px 0 rgba(0,0,0,0.04)}
+.brand{display:flex;align-items:center;gap:12px}
+.logo-circle{width:44px;height:44px;border-radius:10px;background:var(--accent);color:white;display:flex;align-items:center;justify-content:center;font-weight:700}
+.brand-text{font-weight:700}
+.user-area{display:flex;align-items:center;gap:12px}
+.sidebar{background:transparent;padding:24px;display:flex;flex-direction:column;gap:8px}
+.sidebar button{background:white;border-radius:8px;padding:10px 12px;border:1px solid #eee;text-align:left;cursor:pointer}
+.sidebar button.active{background:var(--accent);color:white}
+.content{padding:28px;background:transparent}
+
+.list{margin-top:12px;background:var(--card);padding:12px;border-radius:10px}
+.list-item{display:flex;justify-content:space-between;padding:8px 10px;border-bottom:1px solid #f1f5f9}
+.list-item:last-child{border-bottom:none}
+.form-inline{display:flex;gap:8px}
+.controls{display:flex;gap:12px;align-items:center}
+.switch{position:relative;display:inline-block;width:44px;height:24px}
+.switch input{display:none}
+.slider{position:absolute;cursor:pointer;top:0;left:0;right:0;bottom:0;background:#ccc;border-radius:24px}
+.slider:before{content:'';position:absolute;height:18px;width:18px;left:3px;top:3px;background:white;border-radius:50%;transition:0.15s}
+.switch input:checked + .slider{background:var(--accent)}
+.switch input:checked + .slider:before{transform:translateX(20px)}
+
+h2{margin:0 0 8px}
+
 
 .App-header {
   background-color: #282c34;
