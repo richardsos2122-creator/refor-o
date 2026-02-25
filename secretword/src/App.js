@@ -27,9 +27,9 @@ function App() {
 
   const [guessedLetters, setGuessedLetters] = useState([]);
   const [wrongLetters, setWrongLetters] = useState([]);
-  const [guesses, setGuesses] = useState(6);
+  const [guesses, setGuesses] = useState(10); // Mais tentativas
   const [score, setScore] = useState(0);
-  const [timeLeft, setTimeLeft] = useState(60); // Aumentei o tempo inicial para 60 segundos
+  const [timeLeft, setTimeLeft] = useState(90); // Mais tempo inicial
   const [highScore, setHighScore] = useState(() => {
     try {
       return Number(localStorage.getItem("highScore")) || 0;
@@ -73,8 +73,8 @@ function App() {
     setPickedWord(word);
     setLetters(wordLetters);
 
-    setGuesses(6);
-    setTimeLeft(60);
+    setGuesses(10); // Mais tentativas ao iniciar
+    setTimeLeft(90); // Mais tempo ao iniciar
     setGameStage(stages[1].name);
   }, [pickWordAndCategory]);
 
@@ -110,8 +110,8 @@ function App() {
   // restart the game
   const retry = () => {
     setScore(0);
-    setGuesses(6);
-    setTimeLeft(60); // Reinicia o temporizador
+    setGuesses(10);
+    setTimeLeft(90); // Reinicia o temporizador
     setGameStage(stages[0].name);
   };
 
@@ -163,7 +163,14 @@ function App() {
     if (score < 10) return;
     setScore((s) => s - 10);
     const first = word[0].toLowerCase();
-    setGuessedLetters((prev) => (prev.includes(first) ? prev : [...prev, first]));
+    // Facilitar: revela também a última letra ao comprar dica
+    const last = word[word.length - 1].toLowerCase();
+    setGuessedLetters((prev) => {
+      let arr = prev;
+      if (!arr.includes(first)) arr = [...arr, first];
+      if (!arr.includes(last)) arr = [...arr, last];
+      return arr;
+    });
   };
 
   // temporizador
